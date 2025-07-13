@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WalletCoordinator: Coordinator {
-    
+    func goToNewTransaction()
 }
 
 final class WalletCoordinatorImpl: WalletCoordinator {
@@ -26,5 +26,10 @@ final class WalletCoordinatorImpl: WalletCoordinator {
         navigationController = UINavigationController(rootViewController: walletViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    func goToNewTransaction() {
+        let coordinator: NewTransactionCoordinator = NewTransactionCoordinatorImpl(window: window)
+        coordinator.start()
     }
 }

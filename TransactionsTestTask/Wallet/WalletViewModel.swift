@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WalletViewModel {
+protocol WalletViewModel: WalletViewDelegate {
     
 }
 
@@ -16,5 +16,9 @@ final class WalletViewModelImpl: WalletViewModel {
     
     init(coordinator: WalletCoordinator) {
         self.coordinator = coordinator
+    }
+    
+    func addTransactionButtonTapped() {
+        coordinator.goToNewTransaction()
     }
 }

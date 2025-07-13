@@ -24,6 +24,11 @@
 		92ADBAD12E23B38D00AA51EF /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAD02E23B38D00AA51EF /* WalletViewModel.swift */; };
 		92ADBAD32E23B3C000AA51EF /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAD22E23B3C000AA51EF /* WalletView.swift */; };
 		92ADBAD52E23B40A00AA51EF /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAD42E23B40A00AA51EF /* WalletCoordinator.swift */; };
+		92ADBAD92E23C6D500AA51EF /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAD82E23C6D500AA51EF /* NewTransactionView.swift */; };
+		92ADBADB2E23C6DE00AA51EF /* NewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBADA2E23C6DE00AA51EF /* NewTransactionViewModel.swift */; };
+		92ADBADD2E23C6EA00AA51EF /* NewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBADC2E23C6EA00AA51EF /* NewTransactionViewController.swift */; };
+		92ADBADF2E23C6F600AA51EF /* NewTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBADE2E23C6F600AA51EF /* NewTransactionCoordinator.swift */; };
+		92ADBAE12E23C95300AA51EF /* BackCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAE02E23C95300AA51EF /* BackCoordinating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		92ADBAD02E23B38D00AA51EF /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		92ADBAD22E23B3C000AA51EF /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		92ADBAD42E23B40A00AA51EF /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
+		92ADBAD82E23C6D500AA51EF /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
+		92ADBADA2E23C6DE00AA51EF /* NewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewModel.swift; sourceTree = "<group>"; };
+		92ADBADC2E23C6EA00AA51EF /* NewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewController.swift; sourceTree = "<group>"; };
+		92ADBADE2E23C6F600AA51EF /* NewTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionCoordinator.swift; sourceTree = "<group>"; };
+		92ADBAE02E23C95300AA51EF /* BackCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCoordinating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +155,7 @@
 				92ADBAD72E23C50F00AA51EF /* Protocols */,
 				92ADBAD62E23C50700AA51EF /* App */,
 				92ADBACD2E23B2CE00AA51EF /* Wallet */,
-				92ADBACC2E23B2C000AA51EF /* AddTransaction */,
+				92ADBACC2E23B2C000AA51EF /* NewTransaction */,
 				0DF1D13E2D22DC2D001626E7 /* Services */,
 				1CA3B6612D22B0F600176711 /* Assets.xcassets */,
 				1CA3B6632D22B0F600176711 /* LaunchScreen.storyboard */,
@@ -163,11 +173,15 @@
 			path = TransactionsTestTaskTests;
 			sourceTree = "<group>";
 		};
-		92ADBACC2E23B2C000AA51EF /* AddTransaction */ = {
+		92ADBACC2E23B2C000AA51EF /* NewTransaction */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBAD82E23C6D500AA51EF /* NewTransactionView.swift */,
+				92ADBADA2E23C6DE00AA51EF /* NewTransactionViewModel.swift */,
+				92ADBADC2E23C6EA00AA51EF /* NewTransactionViewController.swift */,
+				92ADBADE2E23C6F600AA51EF /* NewTransactionCoordinator.swift */,
 			);
-			path = AddTransaction;
+			path = NewTransaction;
 			sourceTree = "<group>";
 		};
 		92ADBACD2E23B2CE00AA51EF /* Wallet */ = {
@@ -195,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				92ADBAC82E23B1EB00AA51EF /* Coordinator.swift */,
+				92ADBAE02E23C95300AA51EF /* BackCoordinating.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -333,14 +348,19 @@
 				0D1540612D22EF5D00D6D63F /* AnalyticsEvent.swift in Sources */,
 				92ADBAD12E23B38D00AA51EF /* WalletViewModel.swift in Sources */,
 				92ADBAD32E23B3C000AA51EF /* WalletView.swift in Sources */,
+				92ADBADB2E23C6DE00AA51EF /* NewTransactionViewModel.swift in Sources */,
 				0DF1D1432D22DCD8001626E7 /* PerformOnce.swift in Sources */,
+				92ADBADD2E23C6EA00AA51EF /* NewTransactionViewController.swift in Sources */,
 				92ADBAC92E23B1EB00AA51EF /* Coordinator.swift in Sources */,
 				0DF1D1452D22DD06001626E7 /* BitcoinRateService.swift in Sources */,
 				92ADBACF2E23B36900AA51EF /* WalletViewController.swift in Sources */,
 				0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */,
 				1CA3B6562D22B0F500176711 /* AppDelegate.swift in Sources */,
+				92ADBAE12E23C95300AA51EF /* BackCoordinating.swift in Sources */,
+				92ADBADF2E23C6F600AA51EF /* NewTransactionCoordinator.swift in Sources */,
 				1CA3B6582D22B0F500176711 /* SceneDelegate.swift in Sources */,
 				1CA3B6602D22B0F500176711 /* TransactionsTestTask.xcdatamodeld in Sources */,
+				92ADBAD92E23C6D500AA51EF /* NewTransactionView.swift in Sources */,
 				0DF1D1402D22DC51001626E7 /* ServicesAssembler.swift in Sources */,
 				92ADBAD52E23B40A00AA51EF /* WalletCoordinator.swift in Sources */,
 			);

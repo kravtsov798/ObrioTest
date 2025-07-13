@@ -24,6 +24,8 @@ final class WalletViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = ContentView()
+        let contentView = ContentView()
+        contentView.delegate = viewModel
+        view = contentView
     }
 }
