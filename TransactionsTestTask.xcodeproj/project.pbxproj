@@ -142,12 +142,11 @@
 		1CA3B6542D22B0F500176711 /* TransactionsTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBAD72E23C50F00AA51EF /* Protocols */,
+				92ADBAD62E23C50700AA51EF /* App */,
 				92ADBACD2E23B2CE00AA51EF /* Wallet */,
 				92ADBACC2E23B2C000AA51EF /* AddTransaction */,
-				92ADBAC72E23B1DE00AA51EF /* Coordinators */,
 				0DF1D13E2D22DC2D001626E7 /* Services */,
-				1CA3B6552D22B0F500176711 /* AppDelegate.swift */,
-				1CA3B6572D22B0F500176711 /* SceneDelegate.swift */,
 				1CA3B6612D22B0F600176711 /* Assets.xcassets */,
 				1CA3B6632D22B0F600176711 /* LaunchScreen.storyboard */,
 				1CA3B6662D22B0F600176711 /* Info.plist */,
@@ -162,15 +161,6 @@
 				1CA3B66F2D22B0F600176711 /* TransactionsTestTaskTests.swift */,
 			);
 			path = TransactionsTestTaskTests;
-			sourceTree = "<group>";
-		};
-		92ADBAC72E23B1DE00AA51EF /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				92ADBAC82E23B1EB00AA51EF /* Coordinator.swift */,
-				92ADBACA2E23B22800AA51EF /* AppCoordinator.swift */,
-			);
-			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		92ADBACC2E23B2C000AA51EF /* AddTransaction */ = {
@@ -189,6 +179,24 @@
 				92ADBAD42E23B40A00AA51EF /* WalletCoordinator.swift */,
 			);
 			path = Wallet;
+			sourceTree = "<group>";
+		};
+		92ADBAD62E23C50700AA51EF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1CA3B6572D22B0F500176711 /* SceneDelegate.swift */,
+				92ADBACA2E23B22800AA51EF /* AppCoordinator.swift */,
+				1CA3B6552D22B0F500176711 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		92ADBAD72E23C50F00AA51EF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				92ADBAC82E23B1EB00AA51EF /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
