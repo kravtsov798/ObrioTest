@@ -22,6 +22,8 @@ protocol Endpoint {
 }
 
 extension Endpoint {
+    var headers: [HTTPHeader] { [] }
+    var path: String { "" }
     var queries: [URLQueryItem] { [] }
     
     var bodyModel: Codable? { nil }

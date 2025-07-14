@@ -7,11 +7,7 @@
 
 import Foundation
 
-protocol NetworkService {
-    func request<T: Decodable>(_ urlRequest: URLRequest) async throws -> T
-}
-
-class NetworkServiceImpl: NetworkService {
+class NetworkService {
     private let session: URLSession
      
     init(session: URLSession? = nil) {
@@ -52,5 +48,13 @@ class NetworkServiceImpl: NetworkService {
         } catch {
             throw NetworkError.decodingFailed(description: error.localizedDescription)
         }
+    }
+}
+
+extension NetworkService {
+    func request<T: Decodable>(with endpoint: Endpoint) async throws -> T {
+        let urlRequest = try endpoint.createURLRequest()
+        let responceModel: ResponseModel<T> = try await request(urlRequest)
+        return responceModel.data
     }
 }
