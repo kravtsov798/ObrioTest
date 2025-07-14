@@ -7,14 +7,16 @@
 
 import Foundation
 
-protocol NewTransactionViewModel {
-
-}
+protocol NewTransactionViewModel: NewTransactionViewDelegate {  }
 
 final class NewTransactionViewModelImpl: NewTransactionViewModel {
-    private let coorfinator: NewTransactionCoordinator
+    private let coordinator: NewTransactionCoordinator
     
     init(coordinator: NewTransactionCoordinator) {
-        self.coorfinator = coordinator
+        self.coordinator = coordinator
+    }
+    
+    func addButtonTapped() {
+        coordinator.goBack()
     }
 }
