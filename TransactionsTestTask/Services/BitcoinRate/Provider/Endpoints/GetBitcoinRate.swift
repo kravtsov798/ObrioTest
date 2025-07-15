@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetBitcoinPrice: Endpoint {
+struct GetBitcoinRate: Endpoint {
     var method: HTTPMethod = .GET
     var url: URL? = URL(string: "https://api.coinbase.com/v2/prices/spot?currency=USD")
 }

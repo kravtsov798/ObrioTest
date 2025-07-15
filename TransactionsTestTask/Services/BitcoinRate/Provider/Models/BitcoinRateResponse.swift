@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BitcoinPriceResponse: Decodable {
+struct BitcoinRateResponse: Decodable {
     var amount: String
     var base: String
     var currency: String
