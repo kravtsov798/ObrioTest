@@ -39,17 +39,29 @@
 		92ADBAF42E2556EC00AA51EF /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAF32E2556EC00AA51EF /* HTTPHeader.swift */; };
 		92ADBAF82E25572E00AA51EF /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAF72E25572E00AA51EF /* URLRequest.swift */; };
 		92ADBAFA2E25576B00AA51EF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAF92E25576B00AA51EF /* Endpoint.swift */; };
-		92ADBAFD2E25582300AA51EF /* BitcoinPriceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAFC2E25582300AA51EF /* BitcoinPriceProvider.swift */; };
+		92ADBAFD2E25582300AA51EF /* BitcoinRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAFC2E25582300AA51EF /* BitcoinRateProvider.swift */; };
 		92ADBAFF2E255A5300AA51EF /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBAFE2E255A5300AA51EF /* ResponseModel.swift */; };
-		92ADBB022E255DF400AA51EF /* GetBitcoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB012E255DF400AA51EF /* GetBitcoinPrice.swift */; };
-		92ADBB062E255E1800AA51EF /* BitcoinPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB052E255E1800AA51EF /* BitcoinPriceResponse.swift */; };
+		92ADBB022E255DF400AA51EF /* GetBitcoinRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB012E255DF400AA51EF /* GetBitcoinRate.swift */; };
+		92ADBB062E255E1800AA51EF /* BitcoinRateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB052E255E1800AA51EF /* BitcoinRateResponse.swift */; };
 		92ADBB082E25717A00AA51EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB072E25717A00AA51EF /* Constants.swift */; };
 		92ADBB0B2E257AB200AA51EF /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB0A2E257AB200AA51EF /* PaddedTextField.swift */; };
 		92ADBB0E2E2599E700AA51EF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB0D2E2599E700AA51EF /* UITextField.swift */; };
-		92ADBB112E259BC100AA51EF /* TransactionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB102E259BC100AA51EF /* TransactionsSection.swift */; };
-		92ADBB132E259BEB00AA51EF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB122E259BEB00AA51EF /* TransactionType.swift */; };
-		92ADBB152E259BF400AA51EF /* TransactionExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB142E259BF400AA51EF /* TransactionExpenseCategory.swift */; };
-		92ADBB172E259BFE00AA51EF /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB162E259BFE00AA51EF /* Transaction.swift */; };
+		92ADBB292E267EDA00AA51EF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB282E267ED900AA51EF /* CoreDataStack.swift */; };
+		92ADBB2B2E267F2100AA51EF /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB2A2E267F2100AA51EF /* TransactionRepository.swift */; };
+		92ADBB2E2E2699C800AA51EF /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB2C2E2699C800AA51EF /* TransactionEntity+CoreDataClass.swift */; };
+		92ADBB2F2E2699C800AA51EF /* TransactionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB2D2E2699C800AA51EF /* TransactionEntity+CoreDataProperties.swift */; };
+		92ADBB312E26A38100AA51EF /* TransactionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB302E26A38100AA51EF /* TransactionCellModel.swift */; };
+		92ADBB332E26ACB200AA51EF /* TransactionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB322E26ACB200AA51EF /* TransactionMapper.swift */; };
+		92ADBB352E26B19100AA51EF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB342E26B19100AA51EF /* TransactionType.swift */; };
+		92ADBB382E26C89F00AA51EF /* MockedTransactionsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB372E26C89F00AA51EF /* MockedTransactionsConfigurator.swift */; };
+		92ADBB3A2E26CB8700AA51EF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB392E26CB8700AA51EF /* Date.swift */; };
+		92ADBB3C2E26CBA700AA51EF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB3B2E26CBA700AA51EF /* Double.swift */; };
+		92ADBB3E2E26CBE000AA51EF /* TransactionExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB3D2E26CBE000AA51EF /* TransactionExpenseCategory.swift */; };
+		92ADBB452E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB432E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift */; };
+		92ADBB462E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB442E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift */; };
+		92ADBB492E26D38900AA51EF /* WalletBalanceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB472E26D38900AA51EF /* WalletBalanceEntity+CoreDataClass.swift */; };
+		92ADBB4A2E26D38900AA51EF /* WalletBalanceEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB482E26D38900AA51EF /* WalletBalanceEntity+CoreDataProperties.swift */; };
+		92ADBB4D2E26D97500AA51EF /* BitcoinRateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB4C2E26D97500AA51EF /* BitcoinRateRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,17 +118,29 @@
 		92ADBAF32E2556EC00AA51EF /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		92ADBAF72E25572E00AA51EF /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		92ADBAF92E25576B00AA51EF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		92ADBAFC2E25582300AA51EF /* BitcoinPriceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPriceProvider.swift; sourceTree = "<group>"; };
+		92ADBAFC2E25582300AA51EF /* BitcoinRateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateProvider.swift; sourceTree = "<group>"; };
 		92ADBAFE2E255A5300AA51EF /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
-		92ADBB012E255DF400AA51EF /* GetBitcoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBitcoinPrice.swift; sourceTree = "<group>"; };
-		92ADBB052E255E1800AA51EF /* BitcoinPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPriceResponse.swift; sourceTree = "<group>"; };
+		92ADBB012E255DF400AA51EF /* GetBitcoinRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBitcoinRate.swift; sourceTree = "<group>"; };
+		92ADBB052E255E1800AA51EF /* BitcoinRateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateResponse.swift; sourceTree = "<group>"; };
 		92ADBB072E25717A00AA51EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		92ADBB0A2E257AB200AA51EF /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		92ADBB0D2E2599E700AA51EF /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		92ADBB102E259BC100AA51EF /* TransactionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSection.swift; sourceTree = "<group>"; };
-		92ADBB122E259BEB00AA51EF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
-		92ADBB142E259BF400AA51EF /* TransactionExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExpenseCategory.swift; sourceTree = "<group>"; };
-		92ADBB162E259BFE00AA51EF /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		92ADBB282E267ED900AA51EF /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		92ADBB2A2E267F2100AA51EF /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		92ADBB2C2E2699C800AA51EF /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataClass.swift"; path = "Entities/TransactionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		92ADBB2D2E2699C800AA51EF /* TransactionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataProperties.swift"; path = "Entities/TransactionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		92ADBB302E26A38100AA51EF /* TransactionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModel.swift; sourceTree = "<group>"; };
+		92ADBB322E26ACB200AA51EF /* TransactionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMapper.swift; sourceTree = "<group>"; };
+		92ADBB342E26B19100AA51EF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		92ADBB372E26C89F00AA51EF /* MockedTransactionsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedTransactionsConfigurator.swift; sourceTree = "<group>"; };
+		92ADBB392E26CB8700AA51EF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		92ADBB3B2E26CBA700AA51EF /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		92ADBB3D2E26CBE000AA51EF /* TransactionExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExpenseCategory.swift; sourceTree = "<group>"; };
+		92ADBB432E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BitcoinRateEntity+CoreDataClass.swift"; path = "BitcoinRateEntity/BitcoinRateEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		92ADBB442E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BitcoinRateEntity+CoreDataProperties.swift"; path = "BitcoinRateEntity/BitcoinRateEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		92ADBB472E26D38900AA51EF /* WalletBalanceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WalletBalanceEntity+CoreDataClass.swift"; path = "WalletBalanceEntity/WalletBalanceEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		92ADBB482E26D38900AA51EF /* WalletBalanceEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WalletBalanceEntity+CoreDataProperties.swift"; path = "WalletBalanceEntity/WalletBalanceEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		92ADBB4C2E26D97500AA51EF /* BitcoinRateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +180,12 @@
 		0DF1D13E2D22DC2D001626E7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB4B2E26D94A00AA51EF /* BitcoinRate */,
+				92ADBB2A2E267F2100AA51EF /* TransactionRepository.swift */,
 				0DF1D1412D22DCC3001626E7 /* Helpers */,
 				0DF1D13F2D22DC4B001626E7 /* ServicesAssembler.swift */,
-				0DF1D1442D22DCFF001626E7 /* BitcoinRateService.swift */,
 				0D15405F2D22EF3400D6D63F /* AnalyticsService */,
+				92ADBB282E267ED900AA51EF /* CoreDataStack.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -167,6 +193,7 @@
 		0DF1D1412D22DCC3001626E7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB372E26C89F00AA51EF /* MockedTransactionsConfigurator.swift */,
 				0DF1D1422D22DCD2001626E7 /* PerformOnce.swift */,
 			);
 			path = Helpers;
@@ -175,6 +202,12 @@
 		1CA3B6492D22B0F500176711 = {
 			isa = PBXGroup;
 			children = (
+				92ADBB472E26D38900AA51EF /* WalletBalanceEntity+CoreDataClass.swift */,
+				92ADBB482E26D38900AA51EF /* WalletBalanceEntity+CoreDataProperties.swift */,
+				92ADBB432E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift */,
+				92ADBB442E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift */,
+				92ADBB2C2E2699C800AA51EF /* TransactionEntity+CoreDataClass.swift */,
+				92ADBB2D2E2699C800AA51EF /* TransactionEntity+CoreDataProperties.swift */,
 				1CA3B6542D22B0F500176711 /* TransactionsTestTask */,
 				1CA3B66E2D22B0F600176711 /* TransactionsTestTaskTests */,
 				1CA3B6532D22B0F500176711 /* Products */,
@@ -194,6 +227,7 @@
 		1CA3B6542D22B0F500176711 /* TransactionsTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB362E26B19800AA51EF /* Models */,
 				92ADBB0C2E2599D700AA51EF /* Extensions */,
 				92ADBB092E257AAC00AA51EF /* Views */,
 				92ADBAEC2E25562100AA51EF /* Networking */,
@@ -233,8 +267,8 @@
 		92ADBACD2E23B2CE00AA51EF /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB322E26ACB200AA51EF /* TransactionMapper.swift */,
 				92ADBB0F2E259BBD00AA51EF /* Models */,
-				92ADBAFB2E25581600AA51EF /* Provider */,
 				92ADBAE72E23F58200AA51EF /* Subiews */,
 				92ADBAD22E23B3C000AA51EF /* WalletView.swift */,
 				92ADBAD02E23B38D00AA51EF /* WalletViewModel.swift */,
@@ -317,7 +351,7 @@
 			children = (
 				92ADBB042E255E1000AA51EF /* Models */,
 				92ADBB002E255DEA00AA51EF /* Endpoints */,
-				92ADBAFC2E25582300AA51EF /* BitcoinPriceProvider.swift */,
+				92ADBAFC2E25582300AA51EF /* BitcoinRateProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -325,7 +359,7 @@
 		92ADBB002E255DEA00AA51EF /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				92ADBB012E255DF400AA51EF /* GetBitcoinPrice.swift */,
+				92ADBB012E255DF400AA51EF /* GetBitcoinRate.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -333,7 +367,7 @@
 		92ADBB042E255E1000AA51EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92ADBB052E255E1800AA51EF /* BitcoinPriceResponse.swift */,
+				92ADBB052E255E1800AA51EF /* BitcoinRateResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				92ADBB0D2E2599E700AA51EF /* UITextField.swift */,
+				92ADBB392E26CB8700AA51EF /* Date.swift */,
+				92ADBB3B2E26CBA700AA51EF /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,12 +393,28 @@
 		92ADBB0F2E259BBD00AA51EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92ADBB162E259BFE00AA51EF /* Transaction.swift */,
-				92ADBB142E259BF400AA51EF /* TransactionExpenseCategory.swift */,
-				92ADBB122E259BEB00AA51EF /* TransactionType.swift */,
-				92ADBB102E259BC100AA51EF /* TransactionsSection.swift */,
+				92ADBB302E26A38100AA51EF /* TransactionCellModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		92ADBB362E26B19800AA51EF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92ADBB3D2E26CBE000AA51EF /* TransactionExpenseCategory.swift */,
+				92ADBB342E26B19100AA51EF /* TransactionType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		92ADBB4B2E26D94A00AA51EF /* BitcoinRate */ = {
+			isa = PBXGroup;
+			children = (
+				92ADBAFB2E25581600AA51EF /* Provider */,
+				0DF1D1442D22DCFF001626E7 /* BitcoinRateService.swift */,
+				92ADBB4C2E26D97500AA51EF /* BitcoinRateRepository.swift */,
+			);
+			path = BitcoinRate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,23 +550,30 @@
 			files = (
 				92ADBACB2E23B22800AA51EF /* AppCoordinator.swift in Sources */,
 				0D1540612D22EF5D00D6D63F /* AnalyticsEvent.swift in Sources */,
-				92ADBB112E259BC100AA51EF /* TransactionsSection.swift in Sources */,
 				92ADBAEE2E25566800AA51EF /* NetworkService.swift in Sources */,
+				92ADBB2E2E2699C800AA51EF /* TransactionEntity+CoreDataClass.swift in Sources */,
+				92ADBB2F2E2699C800AA51EF /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				92ADBAD12E23B38D00AA51EF /* WalletViewModel.swift in Sources */,
-				92ADBB172E259BFE00AA51EF /* Transaction.swift in Sources */,
 				92ADBAD32E23B3C000AA51EF /* WalletView.swift in Sources */,
 				92ADBADB2E23C6DE00AA51EF /* NewTransactionViewModel.swift in Sources */,
 				0DF1D1432D22DCD8001626E7 /* PerformOnce.swift in Sources */,
 				92ADBADD2E23C6EA00AA51EF /* NewTransactionViewController.swift in Sources */,
 				92ADBAF22E2556D500AA51EF /* HTTPMethod.swift in Sources */,
-				92ADBB022E255DF400AA51EF /* GetBitcoinPrice.swift in Sources */,
-				92ADBAFD2E25582300AA51EF /* BitcoinPriceProvider.swift in Sources */,
-				92ADBB132E259BEB00AA51EF /* TransactionType.swift in Sources */,
+				92ADBB022E255DF400AA51EF /* GetBitcoinRate.swift in Sources */,
+				92ADBAFD2E25582300AA51EF /* BitcoinRateProvider.swift in Sources */,
+				92ADBB312E26A38100AA51EF /* TransactionCellModel.swift in Sources */,
+				92ADBB4D2E26D97500AA51EF /* BitcoinRateRepository.swift in Sources */,
+				92ADBB492E26D38900AA51EF /* WalletBalanceEntity+CoreDataClass.swift in Sources */,
+				92ADBB4A2E26D38900AA51EF /* WalletBalanceEntity+CoreDataProperties.swift in Sources */,
 				92ADBAE62E23F55100AA51EF /* BitcoinPriceView.swift in Sources */,
 				92ADBAF02E25569E00AA51EF /* NetworkError.swift in Sources */,
 				92ADBAC92E23B1EB00AA51EF /* Coordinator.swift in Sources */,
 				0DF1D1452D22DD06001626E7 /* BitcoinRateService.swift in Sources */,
 				92ADBACF2E23B36900AA51EF /* WalletViewController.swift in Sources */,
+				92ADBB3A2E26CB8700AA51EF /* Date.swift in Sources */,
+				92ADBB292E267EDA00AA51EF /* CoreDataStack.swift in Sources */,
+				92ADBB2B2E267F2100AA51EF /* TransactionRepository.swift in Sources */,
+				92ADBB3E2E26CBE000AA51EF /* TransactionExpenseCategory.swift in Sources */,
 				92ADBB0E2E2599E700AA51EF /* UITextField.swift in Sources */,
 				92ADBAFA2E25576B00AA51EF /* Endpoint.swift in Sources */,
 				0DF1D1472D22DD4A001626E7 /* AnalyticsService.swift in Sources */,
@@ -523,18 +582,23 @@
 				92ADBAF82E25572E00AA51EF /* URLRequest.swift in Sources */,
 				92ADBAF42E2556EC00AA51EF /* HTTPHeader.swift in Sources */,
 				1CA3B6562D22B0F500176711 /* AppDelegate.swift in Sources */,
+				92ADBB382E26C89F00AA51EF /* MockedTransactionsConfigurator.swift in Sources */,
 				92ADBAE12E23C95300AA51EF /* BackCoordinating.swift in Sources */,
 				92ADBB082E25717A00AA51EF /* Constants.swift in Sources */,
 				92ADBADF2E23C6F600AA51EF /* NewTransactionCoordinator.swift in Sources */,
 				1CA3B6582D22B0F500176711 /* SceneDelegate.swift in Sources */,
 				1CA3B6602D22B0F500176711 /* TransactionsTestTask.xcdatamodeld in Sources */,
+				92ADBB352E26B19100AA51EF /* TransactionType.swift in Sources */,
 				92ADBAD92E23C6D500AA51EF /* NewTransactionView.swift in Sources */,
 				0DF1D1402D22DC51001626E7 /* ServicesAssembler.swift in Sources */,
 				92ADBAD52E23B40A00AA51EF /* WalletCoordinator.swift in Sources */,
-				92ADBB152E259BF400AA51EF /* TransactionExpenseCategory.swift in Sources */,
 				92ADBAFF2E255A5300AA51EF /* ResponseModel.swift in Sources */,
 				92ADBAE92E252D6900AA51EF /* TransactionsView.swift in Sources */,
-				92ADBB062E255E1800AA51EF /* BitcoinPriceResponse.swift in Sources */,
+				92ADBB452E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift in Sources */,
+				92ADBB462E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift in Sources */,
+				92ADBB062E255E1800AA51EF /* BitcoinRateResponse.swift in Sources */,
+				92ADBB3C2E26CBA700AA51EF /* Double.swift in Sources */,
+				92ADBB332E26ACB200AA51EF /* TransactionMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
