@@ -10,80 +10,87 @@ import Foundation
 import UIKit
 
 protocol WalletViewModel: WalletViewDelegate {
-    var bitcoinPricePublisher: AnyPublisher<String, Never> { get }
+    var bitcoinRatePublisher: AnyPublisher<String, Never> { get }
     var balancePublisher: AnyPublisher<String, Never> { get }
+    var showDepositPopupPublisher: AnyPublisher<Void, Never> { get }
     
-    func getSectionTitle(at idx: Int) -> String?
-    func getSectionsCount() -> Int
-    func getItemsCount(inSection: Int) -> Int
-    func getItem(for sectionIdx: Int, at rowIdx: Int) -> Transaction?
+    func depositEntered(_ amount: String)
 }
 
 final class WalletViewModelImpl: WalletViewModel {
-    var bitcoinPricePublisher: AnyPublisher<String, Never> { bitcoinSubject.eraseToAnyPublisher() }
+    var bitcoinRatePublisher: AnyPublisher<String, Never> { bitcoinRateSubject.eraseToAnyPublisher() }
     var balancePublisher: AnyPublisher<String, Never> { balanceSubject.eraseToAnyPublisher() }
+    var showDepositPopupPublisher: AnyPublisher<Void, Never> { showDepositPopupSubject.eraseToAnyPublisher() }
     
-    private var sections: [TransactionsSection] = TransactionsSection.mocked
+    private let bitcoinRateSubject: CurrentValueSubject<String, Never> = .init("")
+    private let balanceSubject: CurrentValueSubject<String, Never> = .init("")
+    private let showDepositPopupSubject: PassthroughSubject<Void, Never> = .init()
     
-    //MARK: subjects
-    private let bitcoinSubject: CurrentValueSubject<String, Never> = .init("$118.650")
-    private let balanceSubject: CurrentValueSubject<String, Never> = .init("0.00001 BTC")
-    
-    private let bitcoinPriceProvider: BitcoinPriceProvider = BitcoinPriceProviderImpl()
+    private let balanceService = ServicesAssembler.walletBalanceService()
+    private let bitcoinRateService = ServicesAssembler.bitcoinRateService()
+    private let transactionRepository = ServicesAssembler.transactionRepository()
+    private let analyticsService = ServicesAssembler.analyticsService()
     private let coordinator: WalletCoordinator
+    
+    private var bag: Set<AnyCancellable> = []
     
     init(coordinator: WalletCoordinator) {
         self.coordinator = coordinator
-        fetchData()
-    }
-    
-    func getSectionTitle(at idx: Int) -> String? {
-        guard sections.indices.contains(idx) else { return nil }
-        return sections[idx].title
-    }
-    
-    func getSectionsCount() -> Int {
-        sections.count
-    }
-    
-    func getItemsCount(inSection idx: Int) -> Int {
-        guard sections.indices.contains(idx) else { return 0 }
-        return sections[idx].items.count
-    }
-    
-    func getItem(for sectionIdx: Int, at rowIdx: Int) -> Transaction? {
-        guard sections.indices.contains(sectionIdx),
-              sections[sectionIdx].items.indices.contains(rowIdx)
-        else { return nil }
-        return self.sections[sectionIdx].items[rowIdx]
+        bindData()
     }
     
     func depositButtonTapped() {
-        
+        showDepositPopupSubject.send()
     }
     
     func addTransactionButtonTapped() {
         coordinator.goToNewTransaction()
     }
     
-    private func fetchData() {
-        Task {
-            do {
-                let response = try await bitcoinPriceProvider.getPrice()
-                await handle(bitcoinPriceResponse: response)
-            } catch {
-                await handle(error: error)
+    func depositEntered(_ amount: String) {
+        guard let deposit = amount.double else { return }
+        
+        let model = TransactionModel(
+            id: UUID(),
+            date: .now,
+            type: .income,
+            category: nil,
+            amount: deposit
+        )
+        
+        try? transactionRepository.save(model)
+        balanceService.add(funds: deposit)
+    }
+    
+    private func bindData() {
+        bindBitcoinRate()
+        bindWalletBalance()
+    }
+    
+    private func bindBitcoinRate() {
+        bitcoinRateService.ratePublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0.formattedCurrencyString() }
+            .map { "$" + $0 }
+            .sink { [weak self] rate in
+                self?.sendRateToAnalytics(rate)
+                self?.bitcoinRateSubject.send(rate)
             }
-        }
+            .store(in: &bag)
     }
     
-    @MainActor
-    private func handle(bitcoinPriceResponse: BitcoinPriceResponse) {
-        print("response: \(bitcoinPriceResponse)")
+    private func bindWalletBalance() {
+        balanceService.balancePublisher
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0.formattedCurrencyString() }
+            .map { $0 + "BTC" }
+            .sink { [weak self] balance in
+                self?.balanceSubject.send(String(balance))
+            }
+            .store(in: &bag)
     }
     
-    @MainActor
-    private func handle(error: Error) {
-        print("fetch error: \(error)")
+    private func sendRateToAnalytics(_ rate: String) {
+        analyticsService.trackEvent(name: "bitcoin_rate_update", parameters: ["rate": rate])
     }
 }

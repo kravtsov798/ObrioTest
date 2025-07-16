@@ -35,7 +35,6 @@ final class WalletView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: public interface
     func update(bitcoinPrice: String) {
         bitcoinPriceView.update(price: bitcoinPrice)
     }
@@ -68,7 +67,6 @@ final class WalletView: UIView {
         setupBitcoinPriceViewConstraints()
         setupBalanceTitleLabelConstraints()
         setupBalanceHStackConstraints()
-        setupBalanceLabelConstraints()
         setupDepositButtonConstraints()
         setupAddTransactionButtonConstraints()
         setupTransactionsViewConstraints()
@@ -84,15 +82,14 @@ final class WalletView: UIView {
         balanceHStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             balanceHStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            balanceHStack.heightAnchor.constraint(equalToConstant: 44),
+            balanceHStack.heightAnchor.constraint(equalToConstant: Constants.Layout.buttonHeight),
             balanceHStack.topAnchor.constraint(equalTo: balanceTitleLabel.bottomAnchor, constant: 20)
         ])
     }
     
-    // MARK: Balance title label
     private func setupBalanceTitleLabel() {
         balanceTitleLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        balanceTitleLabel.text = "Balance"
+        balanceTitleLabel.text = "wallet.balance".localized
         balanceTitleLabel.textColor = .white
         balanceTitleLabel.textAlignment = .left
         addSubview(balanceTitleLabel)
@@ -102,12 +99,11 @@ final class WalletView: UIView {
         balanceTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             balanceTitleLabel.topAnchor.constraint(equalTo: bitcoinPriceView.bottomAnchor, constant: 10),
-            balanceTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            balanceTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            balanceTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Layout.hPadding),
+            balanceTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Layout.hPadding)
         ])
     }
     
-    // MARK: Bitcoin price view
     private func setupBitcoinPriceView() {
         addSubview(bitcoinPriceView)
     }
@@ -116,11 +112,10 @@ final class WalletView: UIView {
         bitcoinPriceView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bitcoinPriceView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            bitcoinPriceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            bitcoinPriceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Layout.hPadding),
         ])
     }
     
-    // MARK: Balance label
     private func setupBalanceLabel() {
         balanceLabel.font = .systemFont(ofSize: 28, weight: .bold)
         balanceLabel.textColor = .white
@@ -128,22 +123,15 @@ final class WalletView: UIView {
         balanceHStack.addArrangedSubview(balanceLabel)
     }
     
-    private func setupBalanceLabelConstraints() {
-        balanceLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            balanceLabel.heightAnchor.constraint(equalToConstant: 44),
-        ])
-    }
-    
-    // MARK: Deposit button
     private func setupDepositButton() {
-        depositButton.setTitle("Deposit", for: .normal)
+        depositButton.setTitle("wallet.buttons.deposit".localized, for: .normal)
         depositButton.setTitleColor(.white, for: .normal)
         depositButton.setTitleColor(.white.withAlphaComponent(0.5), for: .highlighted)
         depositButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         depositButton.addTarget(self, action: #selector(depositButtonTapped), for: .touchUpInside)
         depositButton.backgroundColor = .gold
         depositButton.tintColor = .white
+        depositButton.layer.cornerRadius = 8
         
         var configutation = UIButton.Configuration.plain()
         configutation.imagePadding = 8
@@ -161,19 +149,18 @@ final class WalletView: UIView {
     private func setupDepositButtonConstraints() {
         depositButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            depositButton.heightAnchor.constraint(equalToConstant: 44),
-           // depositButton.widthAnchor.constraint(equalToConstant: 100)
+            depositButton.heightAnchor.constraint(equalToConstant: Constants.Layout.buttonHeight)
         ])
     }
     
-    // MARK: Add transaction button
     private func setupAddTransactionButton() {
-        addTransactionButton.setTitle("New transaction", for: .normal)
+        addTransactionButton.setTitle("wallet.buttons.newTransaction".localized, for: .normal)
         addTransactionButton.setTitleColor(.white, for: .normal)
         addTransactionButton.setTitleColor(.white.withAlphaComponent(0.5), for: .highlighted)
         addTransactionButton.backgroundColor = .gold
         addTransactionButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         addTransactionButton.tintColor = .white
+        addTransactionButton.layer.cornerRadius = 8
 
         var configutation = UIButton.Configuration.plain()
         configutation.imagePadding = 8
@@ -193,13 +180,12 @@ final class WalletView: UIView {
         addTransactionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             addTransactionButton.topAnchor.constraint(equalTo: balanceHStack.bottomAnchor, constant: 20),
-            addTransactionButton.heightAnchor.constraint(equalToConstant: 44),
-            addTransactionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            addTransactionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            addTransactionButton.heightAnchor.constraint(equalToConstant: Constants.Layout.buttonHeight),
+            addTransactionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Layout.hPadding),
+            addTransactionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Layout.hPadding)
         ])
     }
     
-    // MARK: Transactions view
     private func setupTransactionsView() {
         addSubview(transactionsView)
     }
@@ -209,8 +195,8 @@ final class WalletView: UIView {
         NSLayoutConstraint.activate([
             transactionsView.topAnchor.constraint(equalTo: addTransactionButton.bottomAnchor, constant: 20),
             transactionsView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            transactionsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            transactionsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            transactionsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Layout.hPadding),
+            transactionsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Layout.hPadding)
         ])
     }
 }
