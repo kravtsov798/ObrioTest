@@ -13,13 +13,11 @@
 /// Make this logic not depending on any module
 enum ServicesAssembler {
     
-    // MARK: - BitcoinRateService
+    // MARK: - Bitcoin rate
     
     static let bitcoinRateService: PerformOnce<BitcoinRateService> = {
         { BitcoinRateServiceImpl() }
     }()
-    
-    // MARK: - Bitcoin rate
     
     static let bitcoinRateRepository: PerformOnce<BitcoinRateRepository> = {
         { BitcoinRateRepositoryImpl(context: CoreDataStack.shared.context) }
@@ -29,11 +27,33 @@ enum ServicesAssembler {
         { BitcoinRateProviderImpl() }
     }()
     
+    // MARK: - Wallet balance
+    
+    static let walletBalanceService: PerformOnce<WalletBalanceService> = {
+        { WalletBalanceServiceImpl.shared }
+    }()
+    
+    static let walletBalanceRepository: PerformOnce<WalletBalanceRepository> = {
+        { WalletBalanceRepositoryImpl(context: CoreDataStack.shared.context) }
+    }()
+    
+    // MARK: - Transaction repository
+    
+    static let transactionRepository: PerformOnce<TransactionRepository> = {
+        { TransactionRepositoryImpl(context: CoreDataStack.shared.context) }
+    }()
+    
     // MARK: - AnalyticsService
     
     static let analyticsService: PerformOnce<AnalyticsService> = {
         let service = AnalyticsServiceImpl()
         
         return { service }
+    }()
+    
+    // MARK: - Alert builder
+    
+    static let alertBuilder: PerformOnce<AlertBuilder> = {
+        { AlertBuilderImpl() }
     }()
 }
