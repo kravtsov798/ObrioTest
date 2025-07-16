@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class NewTransactionViewController: UIViewController {
     private typealias ContentView = NewTransactionView
@@ -13,7 +14,8 @@ final class NewTransactionViewController: UIViewController {
     private let viewModel: NewTransactionViewModel
     private var contentView: ContentView? { view as? ContentView }
     
-    private let categories = ["Groceries", "Taxi", "Electronics", "Restaurant", "Other"]
+    private let alertBuilder = ServicesAssembler.alertBuilder()
+    private var bag: Set<AnyCancellable> = []
     
     init(viewModel: NewTransactionViewModel) {
         self.viewModel = viewModel
@@ -37,10 +39,55 @@ final class NewTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        bindData()
     }
     
     private func configureNavigationBar() {
-        navigationItem.title = "New transaction".uppercased()
+        navigationItem.title = "newTransaction.title".localized.uppercased()
+    }
+    
+    private func bindData() {
+        bindIsAddButtonEnabled()
+        bindErrorMessage()
+        bindTextField()
+    }
+    
+    private func bindIsAddButtonEnabled() {
+        viewModel.isAddButtonEnabled
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEnabled in
+                self?.contentView?.enableAddButton(isEnabled)
+            }
+            .store(in: &bag)
+    }
+    
+    private func bindErrorMessage() {
+        viewModel.errorMessagePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] message in
+                self?.presentErrorAlert(message: message)
+            }
+            .store(in: &bag)
+    }
+    
+    private func bindTextField() {
+        contentView?.textField
+            .publisher(for: \.text)
+            .sink { [weak self] text in
+                guard let text else { return }
+                self?.viewModel.amountEntered(text)
+            }
+            .store(in: &bag)
+    }
+    
+    private func presentErrorAlert(message: String) {
+        let alert = alertBuilder
+            .addTitle("common.error".localized)
+            .addMessage(message)
+            .setStyle(.alert)
+            .addAction(title: "common.ok".localized, actionStyle: .default) { _ in }
+            .build()
+        present(alert, animated: true)
     }
 }
 
@@ -61,7 +108,6 @@ extension NewTransactionViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
 }
@@ -72,16 +118,21 @@ extension NewTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        categories.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        categories[row]
+        viewModel.categoriesCount
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let title = viewModel.categoryTitle(at: row)
+        return createPickerComponentView(title:title)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        viewModel.categorySelected(at: row)
+    }
+    
+    private func createPickerComponentView(title: String?) -> UIView {
         let label = UILabel()
-        label.text = categories[row]
+        label.text = title
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)

@@ -29,10 +29,30 @@ final class NewTransactionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func enableAddButton(_ isEnabled: Bool) {
+        addButton.isEnabled = isEnabled
+        addButton.layer.opacity = isEnabled ? 1 : 0.5
+    }
+    
     private func commonInit() {
         configureView()
+        addTapGesture()
         setupSubviews()
         setupSubviewsConstraints()
+    }
+    
+    private func configureView() {
+        backgroundColor = .darkBlue
+    }
+    
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func viewTapped() {
+        textField.resignFirstResponder()
     }
     
     private func setupSubviews() {
@@ -51,13 +71,8 @@ final class NewTransactionView: UIView {
         setupAddButtonConstraints()
     }
     
-    private func configureView() {
-        backgroundColor = .darkBlue
-    }
-    
-    // MARK: Amount label
     private func setupAmountLabel() {
-        configure(label: amountLabel, name: "Amount")
+        configure(label: amountLabel, name: "newTransaction.amount".localized)
         addSubview(amountLabel)
     }
     
@@ -70,12 +85,11 @@ final class NewTransactionView: UIView {
         ])
     }
     
-    // MARK: Text field
     private func setupTextField() {
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .lightPurple
         textField.textColor = .white
-        textField.setPlaceholder("Enter amount", color: .white.withAlphaComponent(0.5))
+        textField.setPlaceholder("newTransaction.enterAmount".localized, color: .white.withAlphaComponent(0.5))
         addSubview(textField)
     }
     
@@ -89,9 +103,8 @@ final class NewTransactionView: UIView {
         ])
     }
     
-    // MARK: Category label
     private func setupCategoryLabel() {
-        configure(label: categoryLabel, name: "Category")
+        configure(label: categoryLabel, name: "newTransaction.category".localized)
         addSubview(categoryLabel)
     }
     
@@ -104,7 +117,6 @@ final class NewTransactionView: UIView {
         ])
     }
     
-    // MARK: Category picker
     private func setupCategoryPicker() {
         categoryPicker.backgroundColor = .lightPurple.withAlphaComponent(0.2)
         categoryPicker.layer.cornerRadius = 16
@@ -120,10 +132,9 @@ final class NewTransactionView: UIView {
         ])
     }
     
-    // MARK: Add button
     private func setupAddButton() {
         addButton.layer.cornerRadius = 8
-        addButton.setTitle("Add", for: .normal)
+        addButton.setTitle("common.ok".localized, for: .normal)
         addButton.setTitleColor(.white, for: .normal)
         addButton.setTitleColor(.white.withAlphaComponent(0.5), for: .highlighted)
         addButton.backgroundColor = .gold

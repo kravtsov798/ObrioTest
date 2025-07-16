@@ -8,5 +8,15 @@
 import Foundation
 
 extension String {
-    var double: Double? { Double(self.replacingOccurrences(of: ",", with: ".")) }
+    var double: Double? {
+        Double(self.replacingOccurrences(of: ",", with: "."))
+    }
+    
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
+    
+    func localizedFormat(_ args: CVarArg...) -> String {
+        String(format: self.localized, arguments: args)
+    }
 }

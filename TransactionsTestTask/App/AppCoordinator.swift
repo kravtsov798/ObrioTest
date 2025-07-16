@@ -19,4 +19,3 @@ final class AppCoordinator: Coordinator {
         walletCoordinator.start()
     }
 }
-

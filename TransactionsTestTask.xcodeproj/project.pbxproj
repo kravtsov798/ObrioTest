@@ -67,6 +67,7 @@
 		92ADBB5C2E27F27100AA51EF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB5B2E27F27100AA51EF /* String.swift */; };
 		92ADBB5E2E28024B00AA51EF /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB5D2E28024B00AA51EF /* TransactionModel.swift */; };
 		92ADBB602E28220000AA51EF /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB5F2E28220000AA51EF /* AlertBuilder.swift */; };
+		92ADBB622E283A1D00AA51EF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		92ADBB5B2E27F27100AA51EF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		92ADBB5D2E28024B00AA51EF /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		92ADBB5F2E28220000AA51EF /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				92ADBB0C2E2599D700AA51EF /* Extensions */,
 				92ADBAE22E23EEAB00AA51EF /* Resources */,
 				1CA3B6662D22B0F600176711 /* Info.plist */,
+				92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */,
 			);
 			path = TransactionsTestTask;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 			files = (
 				92ADBAE42E23EEBF00AA51EF /* Colors.xcassets in Resources */,
 				1CA3B6622D22B0F600176711 /* Assets.xcassets in Resources */,
+				92ADBB622E283A1D00AA51EF /* Localizable.xcstrings in Resources */,
 				1CA3B6652D22B0F600176711 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,6 +799,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -851,6 +856,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
