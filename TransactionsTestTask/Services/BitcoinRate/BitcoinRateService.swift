@@ -14,10 +14,12 @@ import Combine
 import Foundation
 
 protocol BitcoinRateService: AnyObject {
+    var rate: Double { get }
     var ratePublisher: AnyPublisher<Double, Never> { get }
 }
 
 final class BitcoinRateServiceImpl: BitcoinRateService {
+    var rate: Double { rateSubject.value }
     var ratePublisher: AnyPublisher<Double, Never> { rateSubject.eraseToAnyPublisher() }
     
     private let timerInterval: TimeInterval = 180
