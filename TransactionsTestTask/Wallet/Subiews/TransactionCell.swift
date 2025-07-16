@@ -9,9 +9,10 @@ import UIKit
 
 final class TransactionCell: UITableViewCell {
     static var reuseIdentifier: String { String(describing: self) }
+    static let height: CGFloat = 80
     
     private let containerView = UIView()
-    private let image = UIImageView()
+    private let categoryImage = UIImageView()
     private let timeLabel = UILabel()
     private let amountLabel = UILabel()
     private let categoryLabel = UILabel()
@@ -29,25 +30,30 @@ final class TransactionCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        categoryImage.image = nil
+        categoryLabel.text = nil
+        timeLabel.text = nil
+        amountLabel.text = nil
     }
     
-    func update(with model: Transaction) {
-        image.image = model.image
-        
+    func update(with model: TransactionUIModel) {
+        categoryImage.image = model.image
+        categoryImage.tintColor = model.accentColor
         categoryLabel.text = model.title
         timeLabel.text = model.time
-        
-        amountLabel.text = model.amount.description
-        amountLabel.textColor = model.type == .deposit
-        ? UIColor(red: 0.20, green: 0.77, blue: 0.20, alpha: 1.00)
-        : UIColor(red: 0.67, green: 0.03, blue: 0.01, alpha: 1.00)
+        amountLabel.text = model.amount
+        amountLabel.textColor = model.accentColor
     }
     
     private func commonInit() {
-        contentView.backgroundColor = .clear
-        backgroundColor = .clear
+        configureView()
         setupSubviews()
         setupSubviewsConstraints()
+    }
+    
+    private func configureView() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
     }
     
     private func setupSubviews() {
@@ -65,9 +71,8 @@ final class TransactionCell: UITableViewCell {
         setupHStackConstraints()
     }
     
-    // MARK: Container view
     private func setupContainerView() {
-        containerView.backgroundColor = UIColor(red: 0.41, green: 0.39, blue: 0.73, alpha: 1.00)
+        containerView.backgroundColor = .lightPurple
         containerView.layer.cornerRadius = 8
         contentView.addSubview(containerView)
     }
@@ -82,7 +87,6 @@ final class TransactionCell: UITableViewCell {
         ])
     }
     
-    // MARK: Horizontal stack view
     private func setupHStack() {
         hStack.axis = .horizontal
         hStack.backgroundColor = .clear
@@ -96,22 +100,21 @@ final class TransactionCell: UITableViewCell {
         NSLayoutConstraint.activate([
             hStack.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
             hStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8),
-            hStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
-            hStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
+            hStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.Layout.hPadding),
+            hStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.Layout.hPadding)
         ])
     }
     
-    // MARK: Amount label
     private func setupAmountLabel() {
-        amountLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        amountLabel.font = .systemFont(ofSize: 18, weight: .medium)
         amountLabel.layer.cornerRadius = 8
         hStack.addArrangedSubview(amountLabel)
     }
     
     private func setupImage() {
-        image.contentMode = .scaleAspectFit
-        image.tintColor = .white
-        hStack.addArrangedSubview(image)
+        categoryImage.contentMode = .scaleAspectFit
+        categoryImage.tintColor = .white
+        hStack.addArrangedSubview(categoryImage)
     }
     
     private func setupCategoryTimeVStack() {

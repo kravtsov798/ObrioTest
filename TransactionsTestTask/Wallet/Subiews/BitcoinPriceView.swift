@@ -21,7 +21,6 @@ final class BitcoinPriceView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: public interface
     func update(price: String) {
         bitcoinPriceLabel.text = price
     }
@@ -51,15 +50,15 @@ final class BitcoinPriceView: UIView {
     }
     
     private func setupBitcoinToUSDLabel() {
-        bitcoinToUsdLabel.text = "BTC/USD"
-        bitcoinToUsdLabel.textColor = UIColor(red: 0.84, green: 0.70, blue: 0.21, alpha: 1.00)
+        bitcoinToUsdLabel.text = "common.btcToUsd".localized
+        bitcoinToUsdLabel.textColor = .gold
         bitcoinToUsdLabel.textAlignment = .right
-        bitcoinToUsdLabel.font = .systemFont(ofSize: 14)
+        bitcoinToUsdLabel.font = .systemFont(ofSize: 18)
         vStack.addArrangedSubview(bitcoinToUsdLabel)
     }
 
     private func setupBitcoinPriceLabel() {
-        bitcoinPriceLabel.font = .systemFont(ofSize: 18)
+        bitcoinPriceLabel.font = .systemFont(ofSize: 18, weight: .medium)
         bitcoinPriceLabel.textColor = .white
         bitcoinPriceLabel.textAlignment = .right
         vStack.addArrangedSubview(bitcoinPriceLabel)

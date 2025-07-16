@@ -37,7 +37,7 @@ final class TransactionsView: UIView {
     
     // MARK: Transactions label
     private func setupTransactionsLabel() {
-        transactionsLabel.text = "Transactions"
+        transactionsLabel.text = "wallet.transactions".localized
         transactionsLabel.textAlignment = .left
         transactionsLabel.textColor = .white
         transactionsLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)

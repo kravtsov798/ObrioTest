@@ -12,6 +12,17 @@
         }
       }
     },
+    "common.btcToUsd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BTC/USD"
+          }
+        }
+      }
+    },
     "common.error" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -96,6 +107,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New transaction"
+          }
+        }
+      }
+    },
+    "wallet.transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transactions"
           }
         }
       }

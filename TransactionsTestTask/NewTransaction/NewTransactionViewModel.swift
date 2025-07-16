@@ -63,23 +63,22 @@ final class NewTransactionViewModelImpl: NewTransactionViewModel {
     }
     
     func addButtonTapped() {
-        guard let transactionModel = createTransactionModel() else { return }
+        guard let amount else { return }
+        guard balanceService.canWithdraw(funds: amount) else {
+            errorMessageSubject.send("error.withdraw".localized)
+            return
+        }
+        guard let transactionModel = createTransactionModel() else {
+            errorMessageSubject.send("error.createTransaction".localized)
+            return
+        }
+   
         do {
             try transactionsRepository.save(transactionModel)
-            updateBalance()
+            balanceService.withdraw(funds: amount)
             coordinator.goBack()
         } catch {
             errorMessageSubject.send("error.createTransaction".localized)
-        }
-    }
-    
-    private func updateBalance() {
-        guard let amount else { return }
-        
-        if balanceService.canWithdraw(funds: amount) {
-            balanceService.withdraw(funds: amount)
-        } else {
-            errorMessageSubject.send("error.withdraw".localized)
         }
     }
     
