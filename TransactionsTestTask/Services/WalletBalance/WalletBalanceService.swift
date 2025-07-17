@@ -18,8 +18,6 @@ protocol WalletBalanceService {
 }
 
 final class WalletBalanceServiceImpl: WalletBalanceService {
-    static let shared = WalletBalanceServiceImpl()
-    
     var balance: Double { balanceSubject.value }
     var balancePublisher: AnyPublisher<Double, Never> {
         balanceSubject
@@ -27,12 +25,12 @@ final class WalletBalanceServiceImpl: WalletBalanceService {
             .eraseToAnyPublisher()
     }
    
-    private var balanceSubject: CurrentValueSubject<Double, Never>
+    private let balanceSubject: CurrentValueSubject<Double, Never>
+    private let repository: WalletBalanceRepository
     
-    private let repository = ServicesAssembler.walletBalanceRepository()
-    
-    private init() {
-        balanceSubject = .init(repository.load() ?? 100)
+    init(repository: WalletBalanceRepository) {
+        self.repository = repository
+        balanceSubject = .init(repository.load() ?? 0)
     }
     
     func add(funds: Double) {

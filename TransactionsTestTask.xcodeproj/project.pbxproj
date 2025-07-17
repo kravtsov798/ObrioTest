@@ -68,6 +68,13 @@
 		92ADBB5E2E28024B00AA51EF /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB5D2E28024B00AA51EF /* TransactionModel.swift */; };
 		92ADBB602E28220000AA51EF /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB5F2E28220000AA51EF /* AlertBuilder.swift */; };
 		92ADBB622E283A1D00AA51EF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */; };
+		92ADBB662E284C4700AA51EF /* AnalyticsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB652E284C4700AA51EF /* AnalyticsServiceTests.swift */; };
+		92ADBB6B2E28512700AA51EF /* MockWalletBalanceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB6A2E28512700AA51EF /* MockWalletBalanceRepository.swift */; };
+		92ADBB6D2E28519100AA51EF /* WalletBalanceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB6C2E28519100AA51EF /* WalletBalanceServiceTests.swift */; };
+		92ADBB6F2E28532900AA51EF /* MockBitcoinRateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB6E2E28532900AA51EF /* MockBitcoinRateRepository.swift */; };
+		92ADBB712E28536600AA51EF /* MockBitcoinRateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB702E28536600AA51EF /* MockBitcoinRateProvider.swift */; };
+		92ADBB732E28537800AA51EF /* BitcoinRateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB722E28537800AA51EF /* BitcoinRateServiceTests.swift */; };
+		92ADBB752E28C6CB00AA51EF /* AnalyticsEventName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB742E28C6CB00AA51EF /* AnalyticsEventName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +160,13 @@
 		92ADBB5D2E28024B00AA51EF /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		92ADBB5F2E28220000AA51EF /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		92ADBB652E284C4700AA51EF /* AnalyticsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceTests.swift; sourceTree = "<group>"; };
+		92ADBB6A2E28512700AA51EF /* MockWalletBalanceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWalletBalanceRepository.swift; sourceTree = "<group>"; };
+		92ADBB6C2E28519100AA51EF /* WalletBalanceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceServiceTests.swift; sourceTree = "<group>"; };
+		92ADBB6E2E28532900AA51EF /* MockBitcoinRateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBitcoinRateRepository.swift; sourceTree = "<group>"; };
+		92ADBB702E28536600AA51EF /* MockBitcoinRateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBitcoinRateProvider.swift; sourceTree = "<group>"; };
+		92ADBB722E28537800AA51EF /* BitcoinRateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateServiceTests.swift; sourceTree = "<group>"; };
+		92ADBB742E28C6CB00AA51EF /* AnalyticsEventName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +197,7 @@
 		0D15405F2D22EF3400D6D63F /* AnalyticsService */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB742E28C6CB00AA51EF /* AnalyticsEventName.swift */,
 				0DF1D1462D22DD44001626E7 /* AnalyticsService.swift */,
 				0D1540602D22EF5D00D6D63F /* AnalyticsEvent.swift */,
 			);
@@ -192,6 +207,7 @@
 		0DF1D13E2D22DC2D001626E7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBAEC2E25562100AA51EF /* Networking */,
 				92ADBB552E26EB8200AA51EF /* Repositories */,
 				0DF1D1412D22DCC3001626E7 /* Helpers */,
 				0D15405F2D22EF3400D6D63F /* AnalyticsService */,
@@ -205,6 +221,7 @@
 		0DF1D1412D22DCC3001626E7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				92ADBB672E28511400AA51EF /* Mocks */,
 				92ADBB5F2E28220000AA51EF /* AlertBuilder.swift */,
 				92ADBB372E26C89F00AA51EF /* MockedTransactionsConfigurator.swift */,
 				0DF1D1422D22DCD2001626E7 /* PerformOnce.swift */,
@@ -236,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				92ADBAD62E23C50700AA51EF /* App */,
-				92ADBAEC2E25562100AA51EF /* Networking */,
 				92ADBACD2E23B2CE00AA51EF /* Wallet */,
 				92ADBACC2E23B2C000AA51EF /* NewTransaction */,
 				0DF1D13E2D22DC2D001626E7 /* Services */,
@@ -247,7 +263,6 @@
 				92ADBB0C2E2599D700AA51EF /* Extensions */,
 				92ADBAE22E23EEAB00AA51EF /* Resources */,
 				1CA3B6662D22B0F600176711 /* Info.plist */,
-				92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */,
 			);
 			path = TransactionsTestTask;
 			sourceTree = "<group>";
@@ -256,6 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				1CA3B66F2D22B0F600176711 /* TransactionsTestTaskTests.swift */,
+				92ADBB652E284C4700AA51EF /* AnalyticsServiceTests.swift */,
+				92ADBB6C2E28519100AA51EF /* WalletBalanceServiceTests.swift */,
+				92ADBB722E28537800AA51EF /* BitcoinRateServiceTests.swift */,
 			);
 			path = TransactionsTestTaskTests;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 			children = (
 				1CA3B6612D22B0F600176711 /* Assets.xcassets */,
 				92ADBAE32E23EEBF00AA51EF /* Colors.xcassets */,
+				92ADBB612E283A1C00AA51EF /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -507,6 +526,16 @@
 			path = WalletBalance;
 			sourceTree = "<group>";
 		};
+		92ADBB672E28511400AA51EF /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				92ADBB702E28536600AA51EF /* MockBitcoinRateProvider.swift */,
+				92ADBB6E2E28532900AA51EF /* MockBitcoinRateRepository.swift */,
+				92ADBB6A2E28512700AA51EF /* MockWalletBalanceRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -665,6 +694,8 @@
 				92ADBB3A2E26CB8700AA51EF /* Date.swift in Sources */,
 				92ADBB292E267EDA00AA51EF /* CoreDataStack.swift in Sources */,
 				92ADBB2B2E267F2100AA51EF /* TransactionRepository.swift in Sources */,
+				92ADBB752E28C6CB00AA51EF /* AnalyticsEventName.swift in Sources */,
+				92ADBB6F2E28532900AA51EF /* MockBitcoinRateRepository.swift in Sources */,
 				92ADBB3E2E26CBE000AA51EF /* TransactionExpenseCategory.swift in Sources */,
 				92ADBB0E2E2599E700AA51EF /* UITextField.swift in Sources */,
 				92ADBB572E26EB9500AA51EF /* WalletBalanceRepository.swift in Sources */,
@@ -690,9 +721,11 @@
 				92ADBAD52E23B40A00AA51EF /* WalletCoordinator.swift in Sources */,
 				92ADBAFF2E255A5300AA51EF /* ResponseModel.swift in Sources */,
 				92ADBAE92E252D6900AA51EF /* TransactionsView.swift in Sources */,
+				92ADBB712E28536600AA51EF /* MockBitcoinRateProvider.swift in Sources */,
 				92ADBB452E26D32D00AA51EF /* BitcoinRateEntity+CoreDataClass.swift in Sources */,
 				92ADBB462E26D32D00AA51EF /* BitcoinRateEntity+CoreDataProperties.swift in Sources */,
 				92ADBB062E255E1800AA51EF /* BitcoinRateResponse.swift in Sources */,
+				92ADBB6B2E28512700AA51EF /* MockWalletBalanceRepository.swift in Sources */,
 				92ADBB3C2E26CBA700AA51EF /* Double.swift in Sources */,
 				92ADBB332E26ACB200AA51EF /* TransactionMapper.swift in Sources */,
 			);
@@ -702,6 +735,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92ADBB732E28537800AA51EF /* BitcoinRateServiceTests.swift in Sources */,
+				92ADBB662E284C4700AA51EF /* AnalyticsServiceTests.swift in Sources */,
+				92ADBB6D2E28519100AA51EF /* WalletBalanceServiceTests.swift in Sources */,
 				1CA3B6702D22B0F600176711 /* TransactionsTestTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,10 +959,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4CVFH8NFUH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskTests.kravtsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -941,10 +978,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4CVFH8NFUH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskTests.kravtsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -958,9 +996,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4CVFH8NFUH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests.kravtsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -974,9 +1013,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4CVFH8NFUH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.obrio.TransactionsTestTaskUITests.kravtsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;

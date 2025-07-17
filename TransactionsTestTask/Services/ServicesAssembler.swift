@@ -16,7 +16,8 @@ enum ServicesAssembler {
     // MARK: - Bitcoin rate
     
     static let bitcoinRateService: PerformOnce<BitcoinRateService> = {
-        { BitcoinRateServiceImpl() }
+        let service = BitcoinRateServiceImpl(provider: bitcoinRateProvider(), repository: bitcoinRateRepository())
+        return { service }
     }()
     
     static let bitcoinRateRepository: PerformOnce<BitcoinRateRepository> = {
@@ -30,7 +31,8 @@ enum ServicesAssembler {
     // MARK: - Wallet balance
     
     static let walletBalanceService: PerformOnce<WalletBalanceService> = {
-        { WalletBalanceServiceImpl.shared }
+        let service = WalletBalanceServiceImpl(repository: walletBalanceRepository())
+        return { service }
     }()
     
     static let walletBalanceRepository: PerformOnce<WalletBalanceRepository> = {

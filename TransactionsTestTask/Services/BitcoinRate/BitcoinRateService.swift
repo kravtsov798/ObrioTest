@@ -26,16 +26,21 @@ final class BitcoinRateServiceImpl: BitcoinRateService {
     
     private let rateSubject: CurrentValueSubject<Double, Never> = .init(0)
     
-    private let repository = ServicesAssembler.bitcoinRateRepository()
-    private let provider = ServicesAssembler.bitcoinRateProvider()
+    private let repository: BitcoinRateRepository
+    private let provider: BitcoinRateProvider
     
     private var bag: Set<AnyCancellable> = []
     
     // MARK: - Init
     
-    init() {
+    init(provider: BitcoinRateProvider, repository: BitcoinRateRepository, enableTimer: Bool = true) {
+        self.provider = provider
+        self.repository = repository
+        
         loadCachedRate()
-        startTimer()
+        if enableTimer {
+            startTimer()
+        }
         fetchRate()
     }
     
