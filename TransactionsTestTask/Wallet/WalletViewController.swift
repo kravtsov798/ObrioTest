@@ -44,6 +44,11 @@ final class WalletViewController: UIViewController {
         try? fetchedResultsController?.performFetch()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewDidAppear()
+    }
+    
     private func setupFetchedResultController() {
         let request = TransactionEntity.fetchRequest()
         request.fetchBatchSize = 20

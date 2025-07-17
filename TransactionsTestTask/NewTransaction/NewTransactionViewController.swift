@@ -42,6 +42,11 @@ final class NewTransactionViewController: UIViewController {
         bindData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewDidAppear()
+    }
+    
     private func configureNavigationBar() {
         navigationItem.title = "newTransaction.title".localized.uppercased()
     }

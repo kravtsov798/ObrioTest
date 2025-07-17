@@ -14,6 +14,7 @@ protocol WalletViewModel: WalletViewDelegate {
     var balancePublisher: AnyPublisher<String, Never> { get }
     var showDepositPopupPublisher: AnyPublisher<Void, Never> { get }
     
+    func viewDidAppear()
     func depositEntered(_ amount: String)
 }
 
@@ -47,6 +48,10 @@ final class WalletViewModelImpl: WalletViewModel {
         coordinator.goToNewTransaction()
     }
     
+    func viewDidAppear() {
+        sendViewOpennedToAnalytics()
+    }
+    
     func depositEntered(_ amount: String) {
         guard let deposit = amount.double else { return }
         
@@ -60,6 +65,7 @@ final class WalletViewModelImpl: WalletViewModel {
         
         try? transactionRepository.save(model)
         balanceService.add(funds: deposit)
+        sendTransactionCreatedToAnalytics(model: model)
     }
     
     private func bindData() {
@@ -90,7 +96,23 @@ final class WalletViewModelImpl: WalletViewModel {
             .store(in: &bag)
     }
     
+    private func sendViewOpennedToAnalytics() {
+        analyticsService.trackEvent(name: AnalyticsEventName.screenOpen, parameters: ["screen": "Wallet"])
+    }
+    
     private func sendRateToAnalytics(_ rate: String) {
-        analyticsService.trackEvent(name: "bitcoin_rate_update", parameters: ["rate": rate])
+        analyticsService.trackEvent(name: AnalyticsEventName.bitcoinRateUpdate, parameters: ["rate": rate])
+    }
+    
+    private func sendTransactionCreatedToAnalytics(model: TransactionModel) {
+        var parameters: [String: String]  = ["type": "\(model.type.rawValue)",
+                                             "amount": "\(model.amount)",
+                                             "date": "\(model.date)" ]
+        if let category = model.category {
+            parameters["category"] = "\(category.rawValue)"
+        }
+        
+        analyticsService.trackEvent(name: AnalyticsEventName.transactionCreated,
+                                    parameters: parameters)
     }
 }

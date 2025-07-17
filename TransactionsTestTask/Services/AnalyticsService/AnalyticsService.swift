@@ -14,6 +14,7 @@ import Foundation
 protocol AnalyticsService: AnyObject {
     
     func trackEvent(name: String, parameters: [String: String])
+    func getEvents(name: String?, from: Date?, to: Date?) -> [AnalyticsEvent]
 }
 
 final class AnalyticsServiceImpl {
@@ -37,5 +38,14 @@ extension AnalyticsServiceImpl: AnalyticsService {
         )
         
         events.append(event)
+    }
+    
+    func getEvents(name: String?, from: Date?, to: Date?) -> [AnalyticsEvent] {
+        return events.filter { event in
+            let matchesName = name == nil || event.name == name
+            let matchesFrom = from == nil || event.date >= from!
+            let matchesTo = to == nil || event.date <= to!
+            return matchesName && matchesFrom && matchesTo
+        }
     }
 }

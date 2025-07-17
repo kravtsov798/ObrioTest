@@ -14,6 +14,7 @@ protocol NewTransactionViewModel: NewTransactionViewDelegate {
     
     var categoriesCount: Int { get }
     
+    func viewDidAppear()
     func amountEntered(_ amount: String)
     func categoryTitle(at idx: Int) -> String?
     func categorySelected(at idx: Int)
@@ -40,10 +41,16 @@ final class NewTransactionViewModelImpl: NewTransactionViewModel {
     
     private let balanceService = ServicesAssembler.walletBalanceService()
     private let transactionsRepository = ServicesAssembler.transactionRepository()
+    private let analyticsService = ServicesAssembler.analyticsService()
+    
     private let coordinator: NewTransactionCoordinator
     
     init(coordinator: NewTransactionCoordinator) {
         self.coordinator = coordinator
+    }
+    
+    func viewDidAppear() {
+        sendViewOpennedToAnalytics()
     }
     
     func amountEntered(_ amount: String) {
@@ -66,19 +73,23 @@ final class NewTransactionViewModelImpl: NewTransactionViewModel {
         guard let amount else { return }
         guard balanceService.canWithdraw(funds: amount) else {
             errorMessageSubject.send("error.withdraw".localized)
+            sendTransactionFailedToAnalytics(message: "error.withdraw".localized)
             return
         }
         guard let transactionModel = createTransactionModel() else {
             errorMessageSubject.send("error.createTransaction".localized)
+            sendTransactionFailedToAnalytics(message: "error.createTransaction".localized)
             return
         }
    
         do {
             try transactionsRepository.save(transactionModel)
             balanceService.withdraw(funds: amount)
+            sendTransactionCreatedToAnalytics(model: transactionModel)
             coordinator.goBack()
         } catch {
             errorMessageSubject.send("error.createTransaction".localized)
+            sendTransactionFailedToAnalytics(message: "error.createTransaction".localized)
         }
     }
     
@@ -96,5 +107,25 @@ final class NewTransactionViewModelImpl: NewTransactionViewModel {
             category: selectedCategory,
             amount: amount
         )
+    }
+    
+    private func sendViewOpennedToAnalytics() {
+        analyticsService.trackEvent(name: AnalyticsEventName.screenOpen, parameters: ["screen": "New transaction"])
+    }
+    
+    private func sendTransactionCreatedToAnalytics(model: TransactionModel) {
+        var parameters: [String: String]  = ["type": "\(model.type.rawValue)",
+                                             "amount": "\(model.amount)",
+                                             "date": "\(model.date)" ]
+        if let category = model.category {
+            parameters["category"] = "\(category.rawValue)"
+        }
+        
+        analyticsService.trackEvent(name: AnalyticsEventName.transactionCreated,
+                                    parameters: parameters)
+    }
+    
+    private func sendTransactionFailedToAnalytics(message: String) {
+        analyticsService.trackEvent(name: AnalyticsEventName.transactionCreatedFailed, parameters: ["error": message])
     }
 }
